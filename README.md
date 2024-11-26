@@ -1,99 +1,310 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Hiring System Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A robust NestJS-based RESTful API for managing user registrations. Built with TypeScript, PostgreSQL, and modern development practices.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+### Core Functionality
+- RESTful API endpoints for user management
+- PostgreSQL database integration
+- Data validation and sanitization
+- Swagger API documentation
+- Error handling and logging
+- Database migrations
+- Input validation with class-validator
+- API rate limiting
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Technical Features
+- TypeORM for database management
+- Repository pattern implementation
+- Environment-based configuration
+- Custom exception filters
+- Request validation pipes
+- API versioning
+- CORS configuration
+- Production-ready setup
 
-## Project setup
+## Tech Stack
 
+- **Framework:** NestJS
+- **Language:** TypeScript
+- **Database:** PostgreSQL
+- **ORM:** TypeORM
+- **API Documentation:** Swagger/OpenAPI
+- **Validation:** class-validator & class-transformer
+- **Testing:** Jest
+- **API Testing:** SuperTest
+- **Linting:** ESLint
+- **Code Formatting:** Prettier
+
+## Prerequisites
+
+Before you begin, ensure you have:
+- Node.js (version 18 or later)
+- npm (version 8 or later)
+- PostgreSQL (version 12 or later)
+
+## Installation
+
+1. Clone the repository:
 ```bash
-$ npm install
+git clone <repository-url>
+cd user-registration-api
 ```
 
-## Compile and run the project
-
+2. Install dependencies:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+3. Create a `.env` file in the root directory:
+```env
+# Application
+PORT=3001
+NODE_ENV=development
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=your_password
+DB_NAME=users_db
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+4. Start the development server:
 ```bash
-$ npm install -g mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+The API will be available at `http://localhost:3001`
+Swagger documentation will be available at `http://localhost:3001/api`
 
-## Resources
+## Project Structure
 
-Check out a few resources that may come in handy when working with NestJS:
+```
+src/
+├── config/
+│   ├── database.config.ts
+│   ├── swagger.config.ts
+│   └── validation.config.ts
+├── users/
+│   ├── dto/
+│   │   ├── create-user.dto.ts
+│   │   └── update-user.dto.ts
+│   ├── entities/
+│   │   └── user.entity.ts
+│   ├── users.controller.ts
+│   ├── users.service.ts
+│   └── users.module.ts
+├── migrations/
+│   └── initial-migration.ts
+├── app.module.ts
+└── main.ts
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Available Scripts
 
-## Support
+```bash
+# Development
+npm run start           # Start application
+npm run start:dev      # Start application in watch mode
+npm run start:debug    # Start application in debug mode
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# Production
+npm run build          # Build application
+npm run start:prod     # Start production application
 
-## Stay in touch
+# Database
+npm run migration:generate  # Generate new migration
+npm run migration:run      # Run migrations
+npm run migration:revert   # Revert last migration
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Testing
+npm run test          # Run unit tests
+npm run test:e2e     # Run end-to-end tests
+npm run test:cov     # Generate test coverage report
 
-## License
+# Code Quality
+npm run lint         # Run ESLint
+npm run format       # Format code with Prettier
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| PORT | API port | 3001 |
+| NODE_ENV | Environment | development |
+| DB_HOST | Database host | localhost |
+| DB_PORT | Database port | 5432 |
+| DB_USERNAME | Database username | postgres |
+| DB_PASSWORD | Database password | - |
+| DB_NAME | Database name | users_db |
+
+## API Documentation
+
+### Users Endpoints
+
+#### Get All Users
+```http
+GET /users
+```
+
+#### Create User
+```http
+POST /users
+```
+Request body:
+```json
+{
+  "fullName": "string",
+  "dateOfBirth": "string",
+  "preferredLocation": "string",
+  "programmingSkills": "string[]",
+  "resumeSummary": "string"
+}
+```
+
+#### Get User by ID
+```http
+GET /users/{id}
+```
+
+### API Validation Rules
+
+- **fullName**: Required, max length 50 characters
+- **dateOfBirth**: Required, valid date format
+- **preferredLocation**: Required, must be one of predefined locations
+- **programmingSkills**: Required, array of strings
+- **resumeSummary**: Required, max length 250 characters
+
+## Database Schema
+
+### Users Table
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  fullName VARCHAR(50) NOT NULL,
+  dateOfBirth DATE NOT NULL,
+  preferredLocation VARCHAR(255) NOT NULL,
+  programmingSkills TEXT[] NOT NULL,
+  resumeSummary TEXT NOT NULL,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## Error Handling
+
+The API includes standardized error responses:
+
+```json
+{
+  "statusCode": number,
+  "message": string,
+  "error": string,
+  "timestamp": string,
+  "path": string
+}
+```
+
+## Testing
+
+### Unit Tests
+```bash
+npm run test
+```
+
+### E2E Tests
+```bash
+npm run test:e2e
+```
+
+### Test Coverage
+```bash
+npm run test:cov
+```
+
+## Production Deployment
+
+1. Build the application:
+```bash
+npm run build
+```
+
+2. Set production environment variables
+3. Run database migrations:
+```bash
+npm run migration:run
+```
+
+4. Start the production server:
+```bash
+npm run start:prod
+```
+
+## Security Features
+
+- Helmet for HTTP headers security
+- Rate limiting
+- CORS configuration
+- Input validation
+- Query injection prevention
+- Sanitized error responses
+
+## Development Guidelines
+
+### Code Style
+- Follow NestJS best practices
+- Use TypeScript decorators appropriately
+- Implement proper error handling
+- Write comprehensive tests
+- Document all public methods
+- Use dependency injection
+
+## Troubleshooting
+
+### Common Issues
+
+1. Database Connection
+```bash
+# Check database connection
+npm run typeorm query "SELECT NOW()"
+```
+
+2. Migration Issues
+```bash
+# Reset migrations
+npm run migration:revert
+npm run migration:run
+```
+
+3. Port Already in Use
+```bash
+# Find and kill process
+lsof -i :3001
+kill -9 PID
+```
+
+## Performance Optimization
+
+- Database indexing
+- Query optimization
+- Response caching
+- Rate limiting
+- Connection pooling
+
+## Monitoring
+
+- Winston logger implementation
+- Error tracking
+- Performance monitoring
+- Database query logging
+- API endpoint metrics
+
+## Acknowledgments
+
+- [NestJS](https://nestjs.com/)
+- [TypeORM](https://typeorm.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Swagger](https://swagger.io/)
